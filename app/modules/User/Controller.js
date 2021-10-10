@@ -17,11 +17,10 @@ class UsersController extends Controller {
      Purpose: user register
         Parameter:
             {
-                "email":"john@doe.com",
+                "emailId":"john@doe.com",
                 "password":"john",
-                "mobile":"987654321",
-                "countryCode":"+91"
-                "name":"john",
+                "firstName":"shubh",
+                "lastName":"jain"
             }
     Return: JSON String
    ********************************************************/
@@ -40,7 +39,6 @@ class UsersController extends Controller {
             const checkEmailId = await Users.findOne({ where: filters });
 
             if (checkEmailId) {
-
                 return exportLib.Error.handleError(this.res, { status: false, code: 'CONFLICT', message: exportLib.ResponseEn.DUPLICATE_EMAIL });
             } else {
 
@@ -82,8 +80,6 @@ class UsersController extends Controller {
         {
             "emailId":"john@doe.com"
             "password":"123456",
-            "deviceToken": "",
-            "device": "ios"
         }
     Return: JSON String
    ********************************************************/

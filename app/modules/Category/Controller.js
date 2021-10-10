@@ -14,10 +14,10 @@ class CategoryController extends Controller {
     }
 
     /********************************************************
-    Purpose: add record
+    Purpose: add category
     Parameter:
     {
-        "name": "pizza"
+        "name": "work"
     }
     Return: JSON String
     ********************************************************/
@@ -63,11 +63,11 @@ class CategoryController extends Controller {
     }
 
     /********************************************************
-    Purpose: update record
+    Purpose: update  category record
     Parameter:
     {
-        "name": "pizza",
-        "categoryId": 1
+        "name": "work",
+        "categoryId": "606aa83d-ab96-4741-97c1-103629859a5f"
     }
     Return: JSON String
     ********************************************************/
@@ -100,14 +100,14 @@ class CategoryController extends Controller {
     Purpose: record delete
     Parameter:
     {
-        "categoryId": "1"
+        "categoryId": "606aa83d-ab96-4741-97c1-103629859a5f"
     }
     Return: JSON String
      ********************************************************/
     async deleteCategory() {
         try {
-            let categoryCount = await CategorySchema.count({ where: { categoryId: this.req.body.categoryId } })
-            if (categoryCount) {
+            let categoryCount = await CategorySchema.count({ where: { id: this.req.body.categoryId } })
+            if (!categoryCount) {
                 return exportLib.Error.handleError(this.res, { status: false, code: 'CONFLICT', message: exportLib.ResponseEn.CATEGORY_EXIST });
             }
 

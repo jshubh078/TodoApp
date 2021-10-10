@@ -14,10 +14,12 @@ class CategoryController extends Controller {
     }
 
     /********************************************************
-    Purpose: add record
+    Purpose: create Task
     Parameter:
     {
-        "name": "pizza"
+        "taskName": "work",
+        "taskDescription": "work one",
+        "categoryId": "606aa83d-ab96-4741-97c1-103629859a5f",
     }
     Return: JSON String
     ********************************************************/
@@ -42,7 +44,11 @@ class CategoryController extends Controller {
     }
 
     /********************************************************
-     Purpose: get edit data
+     Purpose: get data
+     Parameter:
+    {
+        "id": "606aa83d-ab96-4741-97c1-103629859a5f",
+    }
      Return: JSON String
      ********************************************************/
     async getEdit() {
@@ -66,10 +72,12 @@ class CategoryController extends Controller {
 
     /********************************************************
     Purpose: update record
-    Parameter:
+   Parameter:
     {
-        "name": "pizza",
-        "categoryId": 1
+        "taskName": "work",
+        "taskDescription": "work one",
+        "categoryId": "work",
+        "taskId":"606aa83d-ab96-4741-97c1-103629859a5f"
     }
     Return: JSON String
     ********************************************************/
@@ -100,10 +108,10 @@ class CategoryController extends Controller {
 
 
     /********************************************************
-    Purpose: record delete
+    Purpose: task  delete
     Parameter:
     {
-        "categoryId": "1"
+        "taskId": "606aa83d-ab96-4741-97c1-103629859a5f"
     }
     Return: JSON String
      ********************************************************/
