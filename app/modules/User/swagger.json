@@ -1,0 +1,211 @@
+{
+    "paths": {
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Create new user in system",
+                "parameters": [{
+                    "name": "user",
+                    "required": true,
+                    "in": "body",
+                    "description": "User that we want to create",
+                    "schema": {
+                        "$ref": "#/definitions/Register"
+                    }
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "New user is created",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Login",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "description": "Login",
+                    "schema": {
+                        "$ref": "#/definitions/Login"
+                    }
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login.",
+                        "schema": {
+                            "$ref": "#/definitions/LoginResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Register": {
+            "required": [
+                "emailId"
+            ],
+            "properties": {
+
+                "emailId": {
+                    "type": "string",
+                    "example": "neha.bhavsar@indianic.com",
+                    "uniqueItems": true
+                },
+                "password": {
+                    "type": "string",
+                    "example": "Test1234",
+                    "uniqueItems": true
+                },
+
+                "lastName": {
+                    "example": "Bhavsar",
+                    "type": "string"
+                },
+                "firstName": {
+                    "example": "Neha",
+                    "type": "string"
+                }
+            }
+        },
+        "RegisterResponse": {
+
+            "properties": {
+
+                "data": {
+
+                    "type": "object",
+                    "properties": {
+                        "userId": {
+                            "type": "string",
+                            "example": "1"
+                        },
+                        "emailId": {
+                            "type": "string",
+                            "example": "test1@grr.la"
+                        },
+                        "firstName": {
+                            "type": "string",
+                            "example": "test1"
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "example": "test1"
+                        }
+                    }
+                },
+                "extra_meta": {
+                    "type": "object",
+                    "properties": {
+
+                    }
+                }
+
+            }
+        },
+        "Login": {
+            "required": [
+                "emailId",
+                "password"
+            ],
+            "properties": {
+                "emailId": {
+                    "type": "string",
+                    "example": "neha.bhavsar@indianic.com",
+                    "uniqueItems": true
+                },
+                "password": {
+                    "type": "string",
+                    "example": "Test1234",
+                    "uniqueItems": true
+                }
+            }
+        },
+        "LoginResponse": {
+
+            "properties": {
+
+                "data": {
+
+                    "type": "object",
+                    "properties": {
+                        "isVerified": {
+                            "type": "boolean",
+                            "example": "true/false"
+                        },
+                        "userId": {
+                            "type": "Number",
+                            "example": 1
+                        },
+                        "emailId": {
+                            "type": "string",
+                            "example": "test1@grr.la"
+                        },
+                        "firstName": {
+                            "type": "string",
+                            "example": "test1"
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "example": "test1"
+                        },
+                        "countryCode": {
+                            "type": "string",
+                            "example": "1245"
+                        },
+                        "mobile": {
+                            "type": "string",
+                            "example": "98745662"
+                        },
+                        "verificationCode": {
+                            "type": "string",
+                            "example": "1245"
+                        },
+                        "city": {
+                            "type": "string",
+                            "example": "Ahmedabad"
+                        },
+                        "state": {
+                            "type": "string",
+                            "example": "gujarat"
+                        },
+                        "country": {
+                            "type": "string",
+                            "example": "India"
+                        },
+                        "uniqueId": {
+                            "type": "string",
+                            "example": "FJCU-344614"
+                        }
+
+                    }
+                },
+                "extra_meta": {
+                    "type": "object",
+                    "properties": {
+                        "token": {
+                            "type": "string",
+                            "example": "ySbm6GC3XKNjgS8-GFd4EJ1VJtpftxQDKzyydDdlOcoz2jixeNx_GDSFttFOdRbi42CfCxvdGYZscPgE1mtooHvu3CVkaKWKbsCfjxWpO8oWw3bb8zN-69Vpyhdv2mHOyt4gc"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "LOGIN_SUCCESS": "Logged in successfully.",
+    "EMAIL_ID": "Please enter email id.",
+    "NAME": "Please enter name.",
+    "MOBILE": "Please enter mobile",
+    "COUNTRY_CODE": "Please enter country code",
+    "INVALID_PASSWORD": "Authentication Failed, Invalid Password.",
+    "CORRECT_CURRENT_PASSWORD": "Please enter correct current password.",
+    "LOGOUT_SUCCESS": "Logged out successfully.",
+
+    "NO_RIGHTS": "User have no rights access.",
+
+    "REGISTERED_EMAIL": "Please enter registered email id.",
+    "CHECK_EMAIL": "Please check your registered mail account.",
+
+    "SEND_PROPER_DATA": "Please send proper data.",
+    "PASSWORD_VALIDATION": "Minimum length of password must be 8 and must include uppercase, lowercase.",
+
+    "SERVER_ERROR": "Internal server error",
+    "REGISTRATION_SCUCCESS": "Registered successfully. Please verify your email.",
+    "USER_NOT_EXIST": "User is not register in our app.",
+    "USER_NOT_SAVED": "User not saved.",
+
+
+
+
+
+
+    "INVALID_TOKEN": "Invalid token.",
+    "TOKEN_EXPIRE": "Token is expired",
+    "SEND_TOKEN": "Please send token with api",
+
+
+    "USER_NOT_UPDATED": "User not updated successfully.",
+    "USER_VERIFIED": "User verified successfully.",
+    "COMMONLY_USED_PASSWORD": "Most commonly used password.",
+    "ALREADY_USED_PASSWORD": "Set new password, it was already used.",
+    "PASSWORD_NOT_SAME_FIRSTNAME": "Password should not be same as firstname.",
+    "USER_SIGNEDUP_SUCCESSFULLY": "User signed up successfully.",
+    "USER_LOGGED_IN_SUCCESSFULLY": "User logged in successfully.",
+    "MAIL_NOT_SEND_SUCCESSFULLY": "Mail not send successfully.",
+    "USER_ADDED_SUCCESSFULLY": "User added successfully.",
+
+    "FORGOT_SUCCESS": "OTP send successfully.",
+    "PASSWORD": "Please enter password",
+    "VALID_USERID": "Please enter user id.",
+    "VALID_ORDERID": "Please enter order id.",
+    "VALID_CATEGORYID": "Please enter category id.",
+    "CATEGORY_SUCCESS": "Category added successfully.",
+    "TASK_SUCCESS": "Task added successfully.",
+    "CATEGORY_EXIST": "Category already exist",
+    "TASK_EXIST": "Task already exist",
+    "RECORD_DELETED_SUCCESSFULLY": "record delete successfully",
+    "SUCCESS": "SUCCESS",
+    "SOCAIL_CHECK": "user has been already registered this social account.",
+    "ALREADY_MOBILE_USER": "We do have user with this Mobile Number.",
+    "ALREADY_EMAIL_USER": "We do have user with this Email id.",
+    "EMAIL_SEND_VERIFICATION": "Email verification link send so please verify your email id.",
+    "MOBILE_CHANGE": "Mobile number changed successfully",
+    "NO_RECORD_FOUND": "No record found",
+
+    "SESSION_EXPIRED": "SESSION_EXPIRED",
+    "TOKEN_WITH_API": "Please send token",
+    "INTERNAL_SERVER_ERROR.": "An Unexpected Error Occurred.",
+    "DATABASE_ERROR": "Something went wrong.",
+
+
+    "VALID_EMAIL": "Please enter valid email id",
+    "%s REQUIRED": "%s REQUIRED",
+    "PASSWORD_VALIDATION_LENGTH": "PASSWORD_VALIDATION_LENGTH",
+    "%s ARRAY": "%s ARRAY",
+    "%s ARRAY_LENGTH": "%s ARRAY_LENGTH",
+    "%s VALID": "%s VALID",
+    "VALID_PORT": "VALID_PORT",
+    "SUCCESS_UPDATE_ADDRESS": "address updated successfully.",
+    "ID": "please enter id",
+    "STATUS": "please enter primary status",
+    "firstName": "please enter first name",
+    "lastName": "please enter last name",
+    "NOT_FOUND": "Details are not found.",
+    "RECORD_ADDED_SUCCESSFULLY": "Record added successfully.",
+    "RECORD_UPDATED_SUCCESSFULLY": "Record updated successfully."
+
+
+
+}

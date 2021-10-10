@@ -1,0 +1,169 @@
+{
+    "paths": {
+        "/category/add": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "description": "Add Category",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add Category",
+                        "schema": {
+                            "$ref": "#/definitions/addCategory"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record added successfully."
+                    }
+                }
+            }
+        },
+        "/category/getEdit/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "description": "Get data",
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of record"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "record data"
+                    }
+                }
+            }
+        },
+        "/category/update": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "description": "Update Category",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Update Category",
+                        "schema": {
+                            "$ref": "#/definitions/updateCategory"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record updated successfully."
+                    }
+                }
+            }
+        },
+        "/category/delete": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "description": "Delete Category",
+                "parameters": [{
+                        "name": "categoryId",
+                        "in": "body",
+                        "description": "Id of Category",
+                        "schema": {
+                            "$ref": "#/definitions/deleteCategory"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record deleted successfully."
+                    }
+                }
+            }
+        }
+
+    },
+    "definitions": {
+        "addCategory": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "example": "Pizza",
+                    "type": "string"
+                }
+            }
+        },
+        "updateCategory": {
+            "required": [
+                "categoryId",
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "example": "pizza",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "example": "606aa83d-ab96-4741-97c1-103629859a5f",
+                    "type": "string"
+                }
+            }
+        },
+        "deleteCategory": {
+            "required": [
+                "categoryId"
+            ],
+            "properties": {
+                "categoryId": {
+                    "example": "606aa83d-ab96-4741-97c1-103629859a5f",
+                    "type": "string"
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,181 @@
+{
+    "paths": {
+        "/task/addTask": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "description": "Add task",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Add Task",
+                        "schema": {
+                            "$ref": "#/definitions/addTask"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record added successfully."
+                    }
+                }
+            }
+        },
+        "/task/getTask/{id}": {
+            "get": {
+                "tags": [
+                    "Task"
+                ],
+                "description": "Get data",
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of record"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "record data"
+                    }
+                }
+            }
+        },
+        "/task/updateTask": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "description": "Update Task",
+                "parameters": [{
+                        "name": "body",
+                        "in": "body",
+                        "description": "Update Task",
+                        "schema": {
+                            "$ref": "#/definitions/updateTask"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record updated successfully."
+                    }
+                }
+            }
+        },
+        "/task/deleteTask": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "description": "Delete Task",
+                "parameters": [{
+                        "name": "taskId",
+                        "in": "body",
+                        "description": "Id of Task",
+                        "schema": {
+                            "$ref": "#/definitions/deleteTask"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Record deleted successfully."
+                    }
+                }
+            }
+        }
+
+    },
+    "definitions": {
+        "addTask": {
+            "required": [
+                "taskName"
+            ],
+            "properties": {
+                "taskName": {
+                    "example": "Work Task 1",
+                    "type": "string"
+                },
+                "taskDescription": {
+                    "example": "work description",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "example": "606aa83d-ab96-4741-97c1-103629859a5f",
+                    "type": "string"
+                }
+            }
+        },
+        "updateTask": {
+            "required": [
+                "taskId",
+                "taskName"
+            ],
+            "properties": {
+                "taskName": {
+                    "example": "pizza",
+                    "type": "string"
+                },
+                "taskId": {
+                    "example": "606aa83d-ab96-4741-97c1-103629859a5f",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "example": "606aa83d-ab96-4741-97c1-103629859a5f",
+                    "type": "string"
+                }
+            }
+        },
+        "deleteTask": {
+            "required": [
+                "taskId"
+            ],
+            "properties": {
+                "taskId": {
+                    "example": "606aa83d-ab96-4741-97c1-103629859a5f",
+                    "type": "string"
+                }
+            }
+        }
+
+    }
+}
