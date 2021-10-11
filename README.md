@@ -18,9 +18,6 @@
 
 > db = your local postgresql data base url
 
-##### Change the url of database and set credential if applicable
-> vi configs.js
-
 ##### Install node modules
 
 > npm install
