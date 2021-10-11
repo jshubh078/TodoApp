@@ -25,4 +25,11 @@
 
 > npm install
 
+##### Swagger Docs Url and username & password
+
+> url http://localhost:5010/docs/
+
+> username :- todoApp 
+> password :- todoApp
+
 

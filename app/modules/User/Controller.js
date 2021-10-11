@@ -71,9 +71,6 @@ class UsersController extends Controller {
         }
     }
 
-
-
-
     /********************************************************
     Purpose: Login
     Parameter:
@@ -133,6 +130,62 @@ class UsersController extends Controller {
             return exportLib.Error.handleError(this.res, { status: false, code: 'INTERNAL_SERVER_ERROR', message: error });
 
         }
+    }
+
+    /********************************************************
+        Purpose: Common function for social register
+        Parameter:
+        {}
+        Return: JSON String
+        ********************************************************/
+    async socialRegister(socialId, type) {
+        return new Promise(async(resolve, reject) => {
+            try {
+                let fieldsArray = ["emailId", "firstName", "lastName", "password", "googleId", "googleToken"];
+
+                // check emailId is exist or not
+                let email = this.req.body.emailId
+                let filters = { "emailId": email.toLowerCase() }
+                const checkEmailId = await Users.findOne({ where: filters });
+
+                if (checkEmailId) {
+                    return exportLib.Error.handleError(this.res, { status: false, code: 'CONFLICT', message: exportLib.ResponseEn.DUPLICATE_EMAIL });
+                } else {
+
+                    let data = await (new RequestBody()).processRequestBody(this.req.body, fieldsArray);
+
+
+                    //check whether google token valid or not
+                    // let checkAuth = await new Globals().checkGoogleAuth(this.req.body.googleToken);
+
+
+                    let isPasswordValid = await (new CommonService()).validatePassword({ password: data['password'] });
+                    if (isPasswordValid && !isPasswordValid.status) {
+                        return exportLib.Response.handleResponse(this.res, { status: false, code: 'UNPROCESSABLE_ENTITY', messageEn: isPasswordValid.messageEn, messageAr: isPasswordValid.messageAr, data: {} });
+                    }
+                    let password = await (new CommonService()).ecryptPassword({ password: data['password'] });
+                    data = {...data, password: password };
+                    data['emailId'] = data['emailId'].toLowerCase();
+                    data['googleId'] = data['googleId'].toLowerCase();
+                    data['googleToken'] = data['googleToken'].toLowerCase();
+                    // save new user
+
+                    const newUserId = await Users.create(data);
+                    let setObject = {
+                        "userId": newUserId.id,
+                        "emailId": newUserId.emailId,
+                        "firstName": newUserId.firstName,
+                        "lastName": newUserId.lastName,
+                    }
+                    exportLib.Response.handleResponse(this.res, { status: true, code: 'SUCCESS', message: exportLib.ResponseEn.REGISTRATION_SCUCCESS, data: setObject });
+
+                }
+
+            } catch (error) {
+                console.log('error =>', error)
+                return exportLib.Error.handleError(this.res, { status: false, code: 'INTERNAL_SERVER_ERROR', message: typeof error == 'string' ? error : 'INTERNAL_SERVER_ERROR' });
+            }
+        });
     }
 }
 module.exports = UsersController;

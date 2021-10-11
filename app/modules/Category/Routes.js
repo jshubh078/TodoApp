@@ -7,10 +7,7 @@ module.exports = (app, express) => {
     const config = require('../../../configs/configs');
     const Validators = require("./Validator");
 
-    router.post('/category/list', Globals.isAuthorized, (req, res, next) => {
-        const obj = (new Controller()).boot(req, res);
-        return obj.listCategory();
-    });
+
 
     router.post('/category/add', Globals.isAuthorized, Validators.categoryValidator(), Validators.validateBody, (req, res, next) => {
         const obj = (new Controller()).boot(req, res);
@@ -28,7 +25,7 @@ module.exports = (app, express) => {
     });
 
 
-    router.post('/category/delete', Globals.isAuthorized, Validators.categoryGetValidator(), Validators.validateBody, (req, res, next) => {
+    router.post('/category/delete', Globals.isAuthorized, (req, res, next) => {
         const obj = (new Controller()).boot(req, res);
         return obj.deleteCategory();
     });

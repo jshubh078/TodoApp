@@ -17,22 +17,11 @@ module.exports = (app, express) => {
         return userObj.login();
     });
 
+    router.post('/users/socialRegister', (req, res, next) => {
+        const userObj = (new UsersController()).boot(req, res);
+        return userObj.socialRegister();
+    });
 
-    // router.get('/users/profile', Globals.isAuthorized, (req, res, next) => {
-    //     const userObj = (new UsersController()).boot(req, res);
-    //     return userObj.userProfile();
-    // });
-
-
-    // router.post('/users/socialAccess', Validators.socialAccessValidator(), Validators.validate, (req, res, next) => {
-    //     const userObj = (new UsersController()).boot(req, res);
-    //     return userObj.socialAccess();
-    // });
-
-    // router.post('/users/checkSocial', (req, res, next) => {
-    //     const userObj = (new UsersController()).boot(req, res);
-    //     return userObj.checkSocial();
-    // });
 
     app.use(config.baseApiUrl, router);
 }

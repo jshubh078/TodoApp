@@ -9,6 +9,8 @@ const Authentication = require('../app/modules/Authentication/Schema').Authtoken
 const Users = require('../app/modules/User/Schema').Users;
 const Model = require('../app/modules/Base/Model');
 const exportLib = require('../lib/Exports');
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client(config.CLIENT_ID);
 
 class Globals {
     // Generate Token
@@ -49,12 +51,12 @@ class Globals {
 
             const authenticate = new Globals();
 
-            const tokenCheck = await authenticate.checkTokenInDB(token);
+            const tokenCheck = await authenticate.checkTokenInDB(token)
             if (!tokenCheck) return exportLib.Error.handleError(res, { status: false, code: 'UNAUTHORIZED', message: exportLib.ResponseEn.INVALID_TOKEN });
 
 
             const tokenExpire = await authenticate.checkExpiration(token);
-            if (!tokenExpire) exportLib.Error.handleError(res, { status: false, code: 'UNAUTHORIZED', message: exportLib.ResponseEn.TOKEN_EXPIRED });
+            if (!tokenExpire) return exportLib.Error.handleError(res, { status: false, code: 'UNAUTHORIZED', message: exportLib.ResponseEn.TOKEN_EXPIRED });
 
             const userExist = await authenticate.checkUserInDB(token);
             if (!userExist) return exportLib.Error.handleError(res, { status: false, code: 'NOT_FOUND', message: exportLib.ResponseEn.USER_NOT_EXIST });
@@ -140,6 +142,28 @@ class Globals {
                 }
             }
             resolve(status);
+        })
+    }
+
+    checkGoogleAuth() {
+        return new Promise(async(resolve, reject) => {
+            try {
+
+
+                const ticket = await client.verifyIdToken({
+                    idToken: token,
+                    audience: CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
+                    // Or, if multiple clients access the backend:
+                    //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+                });
+                const payload = ticket.getPayload();
+                const userid = payload['sub'];
+                // If request specified a G Suite domain:
+                // const domain = payload['hd'];
+                resolve(payload)
+            } catch (error) {
+                console.log(error)
+            }
         })
     }
 }

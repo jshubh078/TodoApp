@@ -118,7 +118,7 @@ class CategoryController extends Controller {
     async deleteTask() {
         try {
             let checkTask = await TaskSchema.findOne({ where: { id: this.req.body.taskId } })
-            console.log(checkTask, 'checktask')
+
             if (!checkTask) {
                 return exportLib.Error.handleError(this.res, { status: false, code: 'CONFLICT', message: exportLib.ResponseEn.TASK_EXIST });
             }

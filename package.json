@@ -20,6 +20,7 @@
         "file-system": "2.2.2",
         "fs": "0.0.1-security",
         "glob": "7.1.4",
+        "google-auth-library": "^7.10.0",
         "http-auth": "3.2.3",
         "into-stream": "^6.0.0",
         "jimp": "^0.10.3",

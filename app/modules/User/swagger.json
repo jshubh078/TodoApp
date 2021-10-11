@@ -65,7 +65,7 @@
 
                 "emailId": {
                     "type": "string",
-                    "example": "neha.bhavsar@indianic.com",
+                    "example": "neha.bhavsar@gmail.com",
                     "uniqueItems": true
                 },
                 "password": {
@@ -127,7 +127,7 @@
             "properties": {
                 "emailId": {
                     "type": "string",
-                    "example": "neha.bhavsar@indianic.com",
+                    "example": "shubh.jain@gmail.com",
                     "uniqueItems": true
                 },
                 "password": {

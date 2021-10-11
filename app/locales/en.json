@@ -40,6 +40,7 @@
     "USER_LOGGED_IN_SUCCESSFULLY": "User logged in successfully.",
     "MAIL_NOT_SEND_SUCCESSFULLY": "Mail not send successfully.",
     "USER_ADDED_SUCCESSFULLY": "User added successfully.",
+    "TOKEN_EXPIRED": "TOKEN_EXPIRED",
 
     "FORGOT_SUCCESS": "OTP send successfully.",
     "PASSWORD": "Please enter password",
@@ -49,6 +50,7 @@
     "CATEGORY_SUCCESS": "Category added successfully.",
     "TASK_SUCCESS": "Task added successfully.",
     "CATEGORY_EXIST": "Category already exist",
+    "TASK_WITH_CATEGORY_EXIST": "task with this category exit",
     "TASK_EXIST": "Task already exist",
     "RECORD_DELETED_SUCCESSFULLY": "record delete successfully",
     "SUCCESS": "SUCCESS",

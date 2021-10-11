@@ -5,7 +5,7 @@ const CategorySchema = require('./Schema').Category;
 const CommonService = require("../../services/Common");
 const RequestBody = require("../../services/RequestBody");
 const exportLib = require('../../../lib/Exports');
-
+const TaskSchema = require('../Task/Schema').Task;
 
 class CategoryController extends Controller {
 
@@ -106,11 +106,14 @@ class CategoryController extends Controller {
      ********************************************************/
     async deleteCategory() {
         try {
-            let categoryCount = await CategorySchema.count({ where: { id: this.req.body.categoryId } })
+            let categoryCount = await CategorySchema.findOne({ where: { id: this.req.body.categoryId } })
             if (!categoryCount) {
-                return exportLib.Error.handleError(this.res, { status: false, code: 'CONFLICT', message: exportLib.ResponseEn.CATEGORY_EXIST });
+                return exportLib.Error.handleError(this.res, { status: false, code: 'NOT_FOUND', message: exportLib.ResponseEn.CATEGORY_EXIST });
             }
-
+            let checkTask = await TaskSchema.findOne({ where: { CategoryId: this.req.body.categoryId } })
+            if (checkTask) {
+                return exportLib.Error.handleError(this.res, { status: false, code: 'NOT_FOUND', message: exportLib.ResponseEn.TASK_WITH_CATEGORY_EXIST });
+            }
             await CategorySchema.destroy({ where: { id: this.req.body.categoryId } });
             return exportLib.Response.handleMessageResponse(this.res, { status: true, code: 'SUCCESS', message: exportLib.ResponseEn.RECORD_DELETED_SUCCESSFULLY });
         } catch (error) {
